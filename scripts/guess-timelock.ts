@@ -3,7 +3,7 @@ import { ethers } from 'ethers';
 import { getCreate2Address } from './create2';
 
 // declare deployment parameters
-import contractArtifact from '../artifacts/contracts/governance/TimelockControllerEnumerable.sol/TimelockControllerEnumerable.json';
+import contractArtifact from '../artifacts/contracts/TimelockControllerEnumerable.sol/TimelockControllerEnumerable.json';
 
 // @ts-ignore
 const constructorTypes = contractArtifact.abi

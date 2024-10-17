@@ -1,7 +1,7 @@
 import { HardhatUserConfig } from 'hardhat/config';
 import '@nomicfoundation/hardhat-chai-matchers';
 import '@nomicfoundation/hardhat-ethers';
-import '@nomicfoundation/hardhat-toolbox-viem';
+import '@nomicfoundation/hardhat-toolbox';
 import '@openzeppelin/hardhat-upgrades';
 import '@typechain/hardhat';
 import 'hardhat-abi-exporter';
@@ -9,8 +9,6 @@ import 'hardhat-contract-sizer';
 import 'hardhat-dependency-compiler';
 import 'hardhat-deploy';
 import 'hardhat-tracer';
-import 'solidity-coverage';
-import 'solidity-docgen';
 
 import dotenv from 'dotenv';
 dotenv.config();
@@ -24,7 +22,7 @@ const defaultAccount = {
   passphrase: '',
 };
 
-import './tasks/transfer-timelock-admin';
+// import './tasks/transfer-timelock-admin';
 
 const config: HardhatUserConfig = {
   solidity: {
@@ -35,17 +33,6 @@ const config: HardhatUserConfig = {
         runs: 200,
       },
     },
-  },
-  gasReporter: {
-    // @ts-ignore
-    reportFormat: 'terminal',
-    outputFile: 'coverage/gasReport.txt',
-    noColors: true,
-    forceTerminalOutput: true,
-    forceTerminalOutputFormat: 'terminal',
-  },
-  paths: {
-    tests: './test/hardhat',
   },
   defaultNetwork: 'hardhat',
   networks: {
@@ -73,25 +60,6 @@ const config: HardhatUserConfig = {
       accounts: defaultAccount,
       saveDeployments: true,
     },
-  },
-  abiExporter: {
-    path: './abi',
-    runOnCompile: true,
-    clear: true,
-    spacing: 2,
-  },
-  docgen: {
-    pages: 'files',
-    exclude: ['interfaces', 'periphery/interfaces', 'governance', 'mocks'],
-  },
-  typechain: {
-    outDir: 'types',
-  },
-  namedAccounts: {
-    deployer: 0,
-  },
-  dependencyCompiler: {
-    paths: ['@openzeppelin/contracts/proxy/transparent/TransparentUpgradeableProxy.sol'],
   },
   etherscan: {
     apiKey: {

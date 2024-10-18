@@ -21,9 +21,9 @@ async function main(hre: HardhatRuntimeEnvironment) {
   );
 
   const byteCode = buildBytecode(constructorTypes, constructorArgs, factory.bytecode);
-  const salt = '0x0eb2e070c46aa7b853dec5326bc7daeda14a46045187b8512279e5d038e552ae';
+  const salt = '0xbb3b5f58de484af29acbcad59946d79acf7f48e743edc3596103467b5f907b20';
 
-  const tx = await create2.deploy(byteCode, saltToHex(salt));
+  const tx = await create2.deploy(byteCode, salt);
   const txR = await tx.wait(1);
 
   // @ts-ignore

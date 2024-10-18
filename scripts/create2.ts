@@ -36,7 +36,7 @@ export function getCreate2Address({
 }) {
   return buildCreate2Address(
     factoryAddress,
-    saltToHex(salt),
+    salt.toString(),
     buildBytecode(constructorTypes, constructorArgs, contractBytecode)
   );
 }

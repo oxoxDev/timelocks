@@ -5,6 +5,8 @@ async function main(hre: HardhatRuntimeEnvironment) {
   const { deploy } = deployments;
   const { deployer } = await getNamedAccounts();
 
+  console.log('i am', deployer);
+
   const deployment = await deploy('Create2Deployer', {
     from: deployer,
     contract: 'Create2Deployer',
@@ -12,9 +14,12 @@ async function main(hre: HardhatRuntimeEnvironment) {
     log: true,
   });
 
-  await hre.run('verify:verify', {
-    address: deployment.address,
-  });
+  console.log('deployed at', deployment.address);
+
+  if (hre.network.name !== 'hardhat')
+    await hre.run('verify:verify', {
+      address: deployment.address,
+    });
 }
 
 main.tags = ['Create2Deployer'];

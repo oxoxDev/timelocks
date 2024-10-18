@@ -19,3 +19,4 @@ The deployed addresses for the various timelocks can be found here.
 | ---------------- | ------------------------------------------------------------------------------------------------------------------------ |
 | Mainnet          | [0x00000ab6ee5a6c1a7ac819b01190b020f7c6599d](https://etherscan.io/address/0x00000ab6ee5a6c1a7ac819b01190b020f7c6599d)    |
 | Linea            | [0x00000ab6ee5a6c1a7ac819b01190b020f7c6599d](https://lineascan.build/address/0x00000ab6ee5a6c1a7ac819b01190b020f7c6599d) |
+| Base             | [0x00000ab6ee5a6c1a7ac819b01190b020f7c6599d](https://basescan.org/address/0x00000ab6ee5a6c1a7ac819b01190b020f7c6599d)    |

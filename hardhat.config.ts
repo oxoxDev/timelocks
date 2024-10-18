@@ -15,7 +15,7 @@ dotenv.config();
 
 const defaultAccount = [process.env.PRIVATE_KEY || '0x'];
 
-// import './tasks/transfer-timelock-admin';
+import './tasks/transfer-timelock-admin';
 
 const _network = (url: string, gasPrice: number | 'auto' = 'auto') => ({
   url,

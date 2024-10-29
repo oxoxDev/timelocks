@@ -7,6 +7,7 @@ export const getTimelock = async (address?: string | Addressable) => {
 };
 
 export const prepareTimelockData = async (
+  from: string | Addressable,
   txs: ContractTransaction[] = [],
   timelockAddr?: string | Addressable
 ) => {
@@ -36,8 +37,14 @@ export const prepareTimelockData = async (
     salt
   );
 
-  console.log('schedule tx', schedule);
-  console.log('execute tx', execute);
+  console.log('');
+  console.log('from', from);
+  console.log('to', schedule.to);
+  console.log('\nschedule tx');
+  console.log(schedule.data);
+  console.log('\nexecute tx');
+  console.log(execute.data);
+  console.log('');
 
   return { schedule, execute };
 };

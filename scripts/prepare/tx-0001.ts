@@ -66,7 +66,7 @@ const job = async () => {
   // update delay to 3 days
   txs.push(await timelock.updateDelay.populateTransaction(86400 * 3));
 
-  const tx = await prepareTimelockData(txs, timelock.target);
+  const tx = await prepareTimelockData(safe, txs, timelock.target);
   const reservesCount = await pool.getReservesCount();
 
   await mockExecuteTimelock(tx.schedule, tx.execute, 86400 * 5, 'mainnet', async () => {

@@ -48,7 +48,10 @@ const config: HardhatUserConfig = {
     ],
   },
   dependencyCompiler: {
-    paths: ['@zerolendxyz/core-v3/contracts/protocol/pool/Pool.sol'],
+    paths: [
+      '@zerolendxyz/core-v3/contracts/protocol/pool/Pool.sol',
+      '@zerolendxyz/core-v3/contracts/protocol/configuration/ACLManager.sol',
+    ],
   },
   defaultNetwork: 'hardhat',
   networks: {

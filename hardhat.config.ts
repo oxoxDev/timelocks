@@ -26,13 +26,29 @@ const _network = (url: string, gasPrice: number | 'auto' = 'auto') => ({
 
 const config: HardhatUserConfig = {
   solidity: {
-    version: '0.8.19',
-    settings: {
-      optimizer: {
-        enabled: true,
-        runs: 200,
+    compilers: [
+      {
+        version: '0.8.19',
+        settings: {
+          optimizer: {
+            enabled: true,
+            runs: 200,
+          },
+        },
       },
-    },
+      {
+        version: '0.8.12',
+        settings: {
+          optimizer: {
+            enabled: true,
+            runs: 200,
+          },
+        },
+      },
+    ],
+  },
+  dependencyCompiler: {
+    paths: ['@zerolendxyz/core-v3/contracts/protocol/pool/Pool.sol'],
   },
   defaultNetwork: 'hardhat',
   networks: {
@@ -47,6 +63,9 @@ const config: HardhatUserConfig = {
           balance: '10000000000000000000000',
         },
       ],
+      forking: {
+        url: 'https://cloudflare-eth.com',
+      },
     },
     arbitrum: _network('https://arb1.arbitrum.io/rpc'),
     base: _network('https://mainnet.base.org'),

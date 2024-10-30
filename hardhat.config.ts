@@ -49,6 +49,7 @@ const config: HardhatUserConfig = {
   },
   dependencyCompiler: {
     paths: [
+      '@zerolendxyz/core-v3/contracts/protocol/pool/PoolConfigurator.sol',
       '@zerolendxyz/core-v3/contracts/protocol/pool/Pool.sol',
       '@zerolendxyz/core-v3/contracts/protocol/configuration/ACLManager.sol',
     ],
@@ -67,7 +68,9 @@ const config: HardhatUserConfig = {
         },
       ],
       forking: {
-        url: 'https://cloudflare-eth.com',
+        enabled: true,
+        blockNumber: 21762133,
+        url: 'https://rpc.ankr.com/base',
       },
     },
     arbitrum: _network('https://arb1.arbitrum.io/rpc'),

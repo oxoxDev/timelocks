@@ -51,6 +51,7 @@ const config: HardhatUserConfig = {
     paths: [
       '@zerolendxyz/core-v3/contracts/protocol/pool/PoolConfigurator.sol',
       '@zerolendxyz/core-v3/contracts/protocol/pool/Pool.sol',
+      '@zerolendxyz/core-v3/contracts/protocol/tokenization/AToken.sol',
       '@zerolendxyz/core-v3/contracts/protocol/configuration/ACLManager.sol',
     ],
   },
@@ -69,10 +70,10 @@ const config: HardhatUserConfig = {
       ],
       forking: {
         enabled: true,
-        blockNumber: 21762133,
         url: 'https://rpc.ankr.com/base',
       },
     },
+    tenderly: _network('https://rpc.tenderly.co/fork/01de304d-fa76-4dd1-bca1-7e99af9442f6'),
     arbitrum: _network('https://arb1.arbitrum.io/rpc'),
     base: _network('https://mainnet.base.org'),
     bsc: _network('https://bsc-dataseed1.bnbchain.org'),

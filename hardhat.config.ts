@@ -70,7 +70,8 @@ const config: HardhatUserConfig = {
       ],
       forking: {
         enabled: true,
-        url: 'https://rpc.ankr.com/base',
+        // url: 'https://rpc.ankr.com/base',
+        url: 'https://rpc.ankr.com/eth',
       },
     },
     tenderly: _network('https://rpc.tenderly.co/fork/01de304d-fa76-4dd1-bca1-7e99af9442f6'),

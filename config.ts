@@ -1,5 +1,6 @@
 export const timelockConfig = {
   coldWallet: '0x84E0E243bF4D297C63740E284e2977836AC011CD', // cold wallet (custodian) which has the ability to propose transactions as well as cancel them in case safe gets compromised
+  hotWallet: '0x6aac0942B8147BffAB73789a82EE12fDA7735BAc', // hot wallet (deployer) which has the ability to execute transactions
 
   // TODO once the governance is live, we will restrict the cold wallet to only cancel transactions
 

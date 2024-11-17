@@ -8,7 +8,7 @@ import 'hardhat-abi-exporter';
 import 'hardhat-contract-sizer';
 import 'hardhat-dependency-compiler';
 import 'hardhat-deploy';
-import 'hardhat-tracer';
+// import 'hardhat-tracer';
 
 import dotenv from 'dotenv';
 dotenv.config();
@@ -16,6 +16,7 @@ dotenv.config();
 const defaultAccount = [process.env.PRIVATE_KEY || '0x'];
 
 import './tasks/transfer-timelock-admin';
+import './tasks/audit-timelock';
 
 const _network = (url: string, gasPrice: number | 'auto' = 'auto') => ({
   url,

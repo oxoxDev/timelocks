@@ -1,20 +1,24 @@
-import { Addressable, ContractTransaction, ZeroAddress } from 'ethers';
-import hre, { ethers } from 'hardhat';
+import { Addressable, ContractTransaction } from 'ethers';
+import { HardhatRuntimeEnvironment } from 'hardhat/types';
 
-export const getTimelock = async (address?: string | Addressable) => {
+export const getTimelock = async (
+  hre: HardhatRuntimeEnvironment,
+  address?: string | Addressable
+) => {
   if (!address) address = (await hre.deployments.get('TimelockControllerEnumerable')).address;
   return await hre.ethers.getContractAt('TimelockControllerEnumerable', address);
 };
 
 export const prepareTimelockData = async (
+  hre: HardhatRuntimeEnvironment,
   from: string | Addressable,
   txs: ContractTransaction[] = [],
   timelockAddr?: string | Addressable
 ) => {
-  const timelock = await getTimelock(timelockAddr);
+  const timelock = await getTimelock(hre, timelockAddr);
 
-  const salt = ethers.id('salt');
-  const predecessor = ethers.zeroPadValue('0x00', 32);
+  const salt = hre.ethers.id('salt');
+  const predecessor = hre.ethers.zeroPadValue('0x00', 32);
   console.log('using salt', salt);
   console.log('using predecessor', predecessor);
 

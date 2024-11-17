@@ -7,7 +7,7 @@ import { ContractTransaction } from 'ethers';
 const job = async () => {
   assert(hre.network.name === 'mainnet' || hre.network.name === 'hardhat', 'not mainnet');
   console.log('using network', hre.network.name);
-  const timelock = await getTimelock('0x00000Ab6Ee5A6c1a7Ac819b01190B020F7c6599d');
+  const timelock = await getTimelock(hre, '0x00000Ab6Ee5A6c1a7Ac819b01190B020F7c6599d');
   const pool = await hre.ethers.getContractAt('Pool', '0xD3a4DA66EC15a001466F324FA08037f3272BDbE8');
   const acl = await hre.ethers.getContractAt(
     'ACLManager',
@@ -66,7 +66,7 @@ const job = async () => {
   // update delay to 3 days
   txs.push(await timelock.updateDelay.populateTransaction(86400 * 3));
 
-  const tx = await prepareTimelockData(safe, txs, timelock.target);
+  const tx = await prepareTimelockData(hre, safe, txs, timelock.target);
   const reservesCount = await pool.getReservesCount();
 
   await mockExecuteTimelock(tx.schedule, tx.execute, 86400 * 5, 'mainnet', async () => {

@@ -13,7 +13,7 @@ const job = async () => {
     'not mainnet'
   );
   console.log('using network', hre.network.name);
-  const timelock = await getTimelock('0x00000Ab6Ee5A6c1a7Ac819b01190B020F7c6599d');
+  const timelock = await getTimelock(hre, '0x00000Ab6Ee5A6c1a7Ac819b01190B020F7c6599d');
   const config = await hre.ethers.getContractAt(
     'PoolConfigurator',
     '0xB40e21D5cD8E9E192B0da3107883f8b0f4e4e6E3'
@@ -46,7 +46,7 @@ const job = async () => {
     })
   ); // upgrade aerousdc_lp
 
-  const tx = await prepareTimelockData(safe, txs, timelock.target);
+  const tx = await prepareTimelockData(hre, safe, txs, timelock.target);
 
   const atoken = await hre.ethers.getContractAt(
     'AToken',

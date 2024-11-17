@@ -13,7 +13,7 @@ const job = async () => {
     'not mainnet'
   );
   console.log('using network', hre.network.name);
-  const timelock = await getTimelock('0x861cC6724D0aA7Ec7a868887643e682b1c16aeeC');
+  const timelock = await getTimelock(hre, '0x861cC6724D0aA7Ec7a868887643e682b1c16aeeC');
   const safe = '0x1890F9204882dfa1B8f0AEaF56ae9b2ed149D18d';
   const pool = await hre.ethers.getContractAt('Pool', '0x4d9429246EA989C9CeE203B43F6d1C7D83e3B8F8');
   const txs: ContractTransaction[] = [];
@@ -50,7 +50,7 @@ const job = async () => {
   const reservesCount = await pool.getReservesList();
   console.log('reserves count', reservesCount.length);
 
-  const tx = await prepareTimelockData(safe, txs, timelock.target);
+  const tx = await prepareTimelockData(hre, safe, txs, timelock.target);
 
   await mockExecuteTimelock(tx.schedule, tx.execute, 86400 * 5, 'zksync', async () => {
     const reservesCountAfter = await pool.getReservesList();

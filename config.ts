@@ -13,7 +13,7 @@ export const timelockConfig = {
     manta: '0x4dcF6a8a1Ea1BFca91deA33a92604F6723f570dD',
     base: '0x6F5Ae60d89dbbc4EeD4B08d08A68dD5679Ac61B4',
     zircuit: '0x4208d11fEE26d32CF53a538080d0C1D8F1481b3A',
-    zksync: '0x1890F9204882dfa1B8f0AEaF56ae9b2ed149D18d', // zksync can go fuck itself but still...
+    zksync: '0x1890F9204882dfa1B8f0AEaF56ae9b2ed149D18d',
     xlayer: '0xd53812368A92c509092F2CB7972AceBa109155ab',
     blast: '0xa01AfbE9D874241F3697CB83FAe59977F0Aa2741',
     mainnet: '0x4E88E72bd81C7EA394cB410296d99987c3A242fE',

@@ -41,3 +41,6 @@ forge-build
 lcov.info
 docs
 forge.dis
+
+era_test_node*
+.cache

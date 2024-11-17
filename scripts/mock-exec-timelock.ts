@@ -9,7 +9,7 @@ export const mockExecuteTimelock = async (
   mockNetwork = 'hardhat',
   callback: () => Promise<void>
 ) => {
-  if (network.name !== 'hardhat' && network.name !== 'tenderly') {
+  if (network.name !== 'hardhat' && network.name !== 'tenderly' && network.name !== 'zksync') {
     console.log('to mock the execution of this script, use a fork network');
     return;
   }

@@ -22,6 +22,8 @@ task(`audit-timelock`).setAction(async (params, hre: HardhatRuntimeEnvironment) 
 
   const _hash = (id: string) => hre.ethers.solidityPackedKeccak256(['string'], [id]);
 
+  const isZksync = hre.network.name === 'zksync';
+
   // CHANGE THIS TO ADD OR REMOVE ROLES
   const roles = [
     {
@@ -42,12 +44,12 @@ task(`audit-timelock`).setAction(async (params, hre: HardhatRuntimeEnvironment) 
     {
       id: 'TIMELOCK_ADMIN_ROLE',
       hash: _hash('TIMELOCK_ADMIN_ROLE'),
-      wallets: [timelock.target.toString().toLowerCase()],
+      wallets: isZksync ? [] : [timelock.target.toString().toLowerCase()],
     },
     {
       id: 'DEFAULT_ADMIN_ROLE',
       hash: '0x0000000000000000000000000000000000000000000000000000000000000000',
-      wallets: [],
+      wallets: isZksync ? [timelock.target.toString().toLowerCase()] : [],
     },
   ];
 
@@ -58,6 +60,7 @@ task(`audit-timelock`).setAction(async (params, hre: HardhatRuntimeEnvironment) 
   console.log('using coldWallet at', coldWallet);
 
   for (let j = 0; j < roles.length; j++) {
+    console.log();
     const role = roles[j];
     const rawRole = role.id;
     const roleHash = role.hash;
@@ -92,11 +95,11 @@ const _checkRole = async (
   role: string
 ) => {
   const admins = await _getRoles(inst, role);
+  console.log(`checking ${roleName} roles for ${name}`);
   if (admins.length == 0) return [];
 
-  console.log(`  checking ${roleName} roles for ${name}`);
   for (let i = 0; i < admins.length; i++) {
-    console.log(`    user ${i + 1} is`, admins[i]);
+    console.log(`   user ${i + 1} is`, admins[i]);
   }
 
   return admins;

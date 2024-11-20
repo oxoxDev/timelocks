@@ -84,8 +84,9 @@ task(`audit-timelock`).setAction(async (params, hre: HardhatRuntimeEnvironment) 
     }
   }
 
+  if (txs.length == 0) console.log('\nno changes needed');
   // emit out the txs for the timelock
-  await prepareTimelockData(hre, gnosisSafe, txs, timelock.target);
+  else await prepareTimelockData(hre, gnosisSafe, txs, timelock.target);
 });
 
 const _checkRole = async (

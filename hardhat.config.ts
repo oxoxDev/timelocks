@@ -71,8 +71,8 @@ const config: HardhatUserConfig = {
       ],
       forking: {
         enabled: true,
-        // url: 'https://rpc.ankr.com/base',
-        url: 'https://cloudflare-eth.com',
+        url: 'https://rpc.ankr.com/base',
+        // url: 'https://cloudflare-eth.com',
         // url: 'https://rpc.ankr.com/zksync_era',
         // url: 'http://127.0.0.1:8011',
       },

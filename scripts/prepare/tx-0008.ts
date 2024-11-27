@@ -1,5 +1,6 @@
 // Do the listing of LBTC Mar PT, pumpBTC & eBTC Mar PT on mainnet btc
 // scheduled: https://etherscan.io/tx/0x90f0d5f6d822a493898dcd6c6b6ecbd00f02a22bfca7f7f33a2c6cac4a3f7e99
+// executed: https://etherscan.io/tx/0x74371dd226bfcc697473bf2539fb0b66ea9576b36d0a854ebe291532feb92f8b
 
 import hre from 'hardhat';
 import assert from 'assert';

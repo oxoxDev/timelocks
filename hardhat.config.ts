@@ -52,6 +52,7 @@ const config: HardhatUserConfig = {
     paths: [
       '@zerolendxyz/core-v3/contracts/protocol/pool/PoolConfigurator.sol',
       '@zerolendxyz/core-v3/contracts/protocol/pool/Pool.sol',
+      '@zerolendxyz/core-v3/contracts/misc/AaveOracle.sol',
       '@zerolendxyz/core-v3/contracts/protocol/tokenization/AToken.sol',
       '@zerolendxyz/core-v3/contracts/protocol/configuration/ACLManager.sol',
     ],

@@ -2,7 +2,7 @@ import hre from 'hardhat';
 import assert from 'assert';
 import { getTimelock, prepareTimelockData } from '../prepare-timelock';
 import { ContractTransaction } from 'ethers';
-import { mockExecuteTimelock } from '../mock-exec-timelock';
+import { executeTimelockZkSync } from '../mock-exec-timelock-zksync';
 
 const job = async () => {
   assert(
@@ -47,7 +47,7 @@ const job = async () => {
   
   const tx = await prepareTimelockData(hre, SAFE, txs, TIMELOCK.target);
 
-  await mockExecuteTimelock(tx.schedule,tx.execute,86400 * 5,'zksync',async()=>{
+  await executeTimelockZkSync(tx.schedule,tx.execute,86400 * 5,async()=>{
     console.log('executed');
   })
 };

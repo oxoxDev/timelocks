@@ -21,7 +21,7 @@ const job = async () => {
     'PoolAddressesProvider',
     POOL_ADDRESS_PROVIDER
   );
-  const data = poolAddressProvider.interface.encodeFunctionData('setPoolImpl', [NEW_POOL_IMPL]);
+  let data = poolAddressProvider.interface.encodeFunctionData('setPoolImpl', [NEW_POOL_IMPL]);
   const txs: ContractTransaction[] = [];
 
   txs.push({
@@ -29,6 +29,22 @@ const job = async () => {
     data: data,
   });
 
+  const KEYRING = '0x6BcDee9b8e016A1B2d50F2fe5f95F5Dd20cBE866';
+
+  // Create an interface for the NEW_POOL_IMPL contract with setKeyring method
+  const poolContract = new hre.ethers.Interface([
+    'function setKeyring(address keyring_) external'
+  ]);
+
+  data = poolContract.encodeFunctionData('setKeyring', [KEYRING]);
+
+  console.log('Setting keyring to', data);
+
+  txs.push({
+    to: NEW_POOL_IMPL, 
+    data: data,
+  });
+  
   const tx = await prepareTimelockData(hre, SAFE, txs, TIMELOCK.target);
 
   await mockExecuteTimelock(tx.schedule,tx.execute,86400 * 5,'zksync',async()=>{
@@ -36,4 +52,4 @@ const job = async () => {
   })
 };
 
-job();
+job();  
